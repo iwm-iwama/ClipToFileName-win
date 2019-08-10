@@ -17,7 +17,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = @"Dir／Fileリスト iwm20190809";
+		private const string VERSION = @"Dir／Fileリスト iwm20190810";
 		private const string CRLF = "\r\n";
 
 		private readonly string[] ADirFile = { "Dir&File", "Dir", "File" };
@@ -219,7 +219,7 @@ namespace iwm_ClipToFileName
 
 				_ = SB.Clear();
 
-				if (TbSearch.Text != "" && LDirFileResult.Count > 0)
+				if (TbSearch.Text.Length > 0 && LDirFileResult.Count > 0)
 				{
 					foreach (string _s1 in LDirFileResult)
 					{
