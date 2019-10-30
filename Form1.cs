@@ -17,7 +17,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = @"Dir／Fileリスト iwm20190810";
+		private const string VERSION = @"Dir／Fileリスト iwm20191030";
 		private const string CRLF = "\r\n";
 
 		private readonly string[] ADirFile = { "Dir&File", "Dir", "File" };
