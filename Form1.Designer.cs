@@ -33,7 +33,7 @@
 			this.CmsResult = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.CmsResult_フォルダ選択 = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsResult_L1 = new System.Windows.Forms.ToolStripSeparator();
-			this.CmsResult_クリア = new System.Windows.Forms.ToolStripMenuItem();
+			this.CmsResult_全クリア = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsResult_全選択コピー = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsResult_コピー = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsResult_L2 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,7 +51,7 @@
 			this.BtnExec = new System.Windows.Forms.Button();
 			this.TbSearch = new System.Windows.Forms.TextBox();
 			this.CmsSearch = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.CmsSearch_クリア = new System.Windows.Forms.ToolStripMenuItem();
+			this.CmsSearch_全クリア = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsSearch_L1 = new System.Windows.Forms.ToolStripSeparator();
 			this.CmsSearch_貼り付け = new System.Windows.Forms.ToolStripMenuItem();
 			this.Lbl3 = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@
 			this.CmsResult.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmsResult_フォルダ選択,
             this.CmsResult_L1,
-            this.CmsResult_クリア,
+            this.CmsResult_全クリア,
             this.CmsResult_全選択コピー,
             this.CmsResult_コピー,
             this.CmsResult_L2,
@@ -111,12 +111,12 @@
 			this.CmsResult_L1.Name = "CmsResult_L1";
 			this.CmsResult_L1.Size = new System.Drawing.Size(158, 6);
 			// 
-			// CmsResult_クリア
+			// CmsResult_全クリア
 			// 
-			this.CmsResult_クリア.Name = "CmsResult_クリア";
-			this.CmsResult_クリア.Size = new System.Drawing.Size(161, 22);
-			this.CmsResult_クリア.Text = "クリア";
-			this.CmsResult_クリア.Click += new System.EventHandler(this.CmsResult_クリア_Click);
+			this.CmsResult_全クリア.Name = "CmsResult_全クリア";
+			this.CmsResult_全クリア.Size = new System.Drawing.Size(161, 22);
+			this.CmsResult_全クリア.Text = "全クリア";
+			this.CmsResult_全クリア.Click += new System.EventHandler(this.CmsResult_全クリア_Click);
 			// 
 			// CmsResult_全選択コピー
 			// 
@@ -275,28 +275,28 @@
 			// CmsSearch
 			// 
 			this.CmsSearch.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsSearch_クリア,
+            this.CmsSearch_全クリア,
             this.CmsSearch_L1,
             this.CmsSearch_貼り付け});
 			this.CmsSearch.Name = "contextMenuStrip2";
-			this.CmsSearch.Size = new System.Drawing.Size(125, 54);
+			this.CmsSearch.Size = new System.Drawing.Size(181, 76);
 			// 
-			// CmsSearch_クリア
+			// CmsSearch_全クリア
 			// 
-			this.CmsSearch_クリア.Name = "CmsSearch_クリア";
-			this.CmsSearch_クリア.Size = new System.Drawing.Size(124, 22);
-			this.CmsSearch_クリア.Text = "クリア";
-			this.CmsSearch_クリア.Click += new System.EventHandler(this.CmsSearch_クリア_Click);
+			this.CmsSearch_全クリア.Name = "CmsSearch_全クリア";
+			this.CmsSearch_全クリア.Size = new System.Drawing.Size(180, 22);
+			this.CmsSearch_全クリア.Text = "全クリア";
+			this.CmsSearch_全クリア.Click += new System.EventHandler(this.CmsSearch_全クリア_Click);
 			// 
 			// CmsSearch_L1
 			// 
 			this.CmsSearch_L1.Name = "CmsSearch_L1";
-			this.CmsSearch_L1.Size = new System.Drawing.Size(121, 6);
+			this.CmsSearch_L1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// CmsSearch_貼り付け
 			// 
 			this.CmsSearch_貼り付け.Name = "CmsSearch_貼り付け";
-			this.CmsSearch_貼り付け.Size = new System.Drawing.Size(124, 22);
+			this.CmsSearch_貼り付け.Size = new System.Drawing.Size(180, 22);
 			this.CmsSearch_貼り付け.Text = "貼り付け";
 			this.CmsSearch_貼り付け.Click += new System.EventHandler(this.CmsSearch_貼り付け_Click);
 			// 
@@ -375,12 +375,12 @@
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_コピー;
 		private System.Windows.Forms.Label Lbl1;
 		private System.Windows.Forms.Button BtnExec;
-		private System.Windows.Forms.ToolStripMenuItem CmsResult_クリア;
+		private System.Windows.Forms.ToolStripMenuItem CmsResult_全クリア;
 		private System.Windows.Forms.ToolStripSeparator CmsResult_L1;
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_フォルダ選択;
 		private System.Windows.Forms.TextBox TbSearch;
 		private System.Windows.Forms.ContextMenuStrip CmsSearch;
-		private System.Windows.Forms.ToolStripMenuItem CmsSearch_クリア;
+		private System.Windows.Forms.ToolStripMenuItem CmsSearch_全クリア;
 		private System.Windows.Forms.ToolStripSeparator CmsSearch_L1;
 		private System.Windows.Forms.ToolStripMenuItem CmsSearch_貼り付け;
 		private System.Windows.Forms.Label Lbl3;

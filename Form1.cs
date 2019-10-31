@@ -17,7 +17,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = @"Dir／Fileリスト iwm20191030";
+		private const string VERSION = @"Dir／Fileリスト iwm20191031";
 		private const string CRLF = "\r\n";
 
 		private readonly string[] ADirFile = { "Dir&File", "Dir", "File" };
@@ -112,7 +112,7 @@ namespace iwm_ClipToFileName
 			SubTextboxToListInit();
 		}
 
-		private void CmsResult_クリア_Click(object sender, EventArgs e)
+		private void CmsResult_全クリア_Click(object sender, EventArgs e)
 		{
 			TbResult.Text = "";
 			Lbl1.Text = "";
@@ -203,8 +203,7 @@ namespace iwm_ClipToFileName
 
 			foreach (string dirName in LDirFileBase)
 			{
-				int levelMax = RtnSerchCharCnt(dirName, '\\') + depth;
-				--levelMax;// -1 しておく
+				int levelMax = RtnSerchCharCnt(dirName.TrimEnd('\\'), '\\') + depth;
 
 				SubGetDF01(dirName, wildCard, levelMax);
 				SubGetDF11(dirName, wildCard, levelMax);
@@ -296,25 +295,25 @@ namespace iwm_ClipToFileName
 			int levelMax
 		)
 		{
-			if (levelMax <= RtnSerchCharCnt(dirName.TrimEnd('\\'), '\\'))
-			{
-				return;
-			}
-
 			try
 			{
+				int iCnt = 1 + RtnSerchCharCnt(dirName.TrimEnd('\\'), '\\');
+
 				// 子
 				DirectoryInfo dirInfo = new DirectoryInfo(dirName);
 				foreach (DirectoryInfo FI in dirInfo.EnumerateDirectories("*"))
 				{
-					SubGetDF12(FI.FullName, wildCard, levelMax);
-
-					string dirName2 = FI.FullName + @"\";
-					SubGetDF11(dirName2, wildCard, levelMax);
-
-					if (CbType.Text != ADirFile[2])
+					if (levelMax >= iCnt)
 					{
-						LDirFileResult.Add(dirName2);
+						SubGetDF12(FI.FullName, wildCard, levelMax);
+
+						string dirName2 = FI.FullName + @"\";
+						SubGetDF11(dirName2, wildCard, levelMax);
+
+						if (CbType.Text != ADirFile[2])
+						{
+							LDirFileResult.Add(dirName2);
+						}
 					}
 				}
 			}
@@ -337,10 +336,15 @@ namespace iwm_ClipToFileName
 
 			try
 			{
+				int iCnt = 1 + RtnSerchCharCnt(dirName.TrimEnd('\\'), '\\');
+
 				DirectoryInfo dirInfo = new DirectoryInfo(dirName);
 				foreach (FileInfo FI in dirInfo.EnumerateFiles(wildCard, SearchOption.TopDirectoryOnly))
 				{
-					LDirFileResult.Add(FI.FullName);
+					if (levelMax >= iCnt)
+					{
+						LDirFileResult.Add(FI.FullName);
+					}
 				}
 			}
 			catch
@@ -394,7 +398,7 @@ namespace iwm_ClipToFileName
 			}
 		}
 
-		private void CmsSearch_クリア_Click(object sender, EventArgs e)
+		private void CmsSearch_全クリア_Click(object sender, EventArgs e)
 		{
 			TbSearch.Text = "";
 			TbSearch.Focus();
