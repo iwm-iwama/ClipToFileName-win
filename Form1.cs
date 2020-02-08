@@ -18,7 +18,7 @@ namespace iwm_ClipToFileName
 	public partial class Form1 : Form
 	{
 		private const string VERSION = @"Dir／Fileリスト iwm20191031";
-		private const string CRLF = "\r\n";
+		private const string NL = "\r\n";
 
 		private readonly string[] ADirFile = { "Dir&File", "Dir", "File" };
 		private readonly int[] DirLevel = { 0, 260 };
@@ -224,7 +224,7 @@ namespace iwm_ClipToFileName
 					{
 						if (_s1.IndexOf(TbSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
 						{
-							_ = SB.Append(_s1.TrimEnd() + CRLF);
+							_ = SB.Append(_s1.TrimEnd() + NL);
 							++cnt;
 						}
 					}
@@ -233,7 +233,7 @@ namespace iwm_ClipToFileName
 				{
 					foreach (string _s1 in LDirFileResult)
 					{
-						_ = SB.Append(_s1.TrimEnd() + CRLF);
+						_ = SB.Append(_s1.TrimEnd() + NL);
 					}
 					cnt = LDirFileResult.Count;
 				}
@@ -256,7 +256,7 @@ namespace iwm_ClipToFileName
 			_ = SB.Clear();
 			foreach (string _s1 in LDirFileBase)
 			{
-				_ = SB.Append(_s1 + CRLF);
+				_ = SB.Append(_s1 + NL);
 			}
 			_ = SendMessage(TbResult.Handle, EM_REPLACESEL, 1, SB.ToString());
 
