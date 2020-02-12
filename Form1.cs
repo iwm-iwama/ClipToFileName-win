@@ -17,7 +17,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = @"Dir／Fileリスト iwm20191031";
+		private const string VERSION = @"Dir／Fileリスト iwm20200212";
 		private const string NL = "\r\n";
 
 		private readonly string[] ADirFile = { "Dir&File", "Dir", "File" };
@@ -30,6 +30,8 @@ namespace iwm_ClipToFileName
 
 		[DllImport("User32.dll")]
 		private static extern int SendMessage(IntPtr hWnd, int uMsg, int wParam, string lParam);
+
+		private int DispCnt = 0;
 
 		public Form1()
 		{
@@ -66,21 +68,20 @@ namespace iwm_ClipToFileName
 
 				foreach (string _s1 in Clipboard.GetFileDropList())
 				{
-					string s02 = _s1;
-					if (Directory.Exists(_s1))
+					string _s2 = _s1;
+					if (Directory.Exists(_s2))
 					{
-						s02 = s02.TrimEnd('\\') + @"\";
+						_s2 = _s2.TrimEnd('\\') + @"\";
 					}
-					LDirFileBase.Add(s02);
+					LDirFileBase.Add(_s2);
 				}
 				LDirFileBase.Sort();
 
-				SubTextboxToListInit(false);
+				SubTextboxToListInit();
 			}
 			else
 			{
 				TbResult.Text = "フォルダ／ファイル を ドロップ してください。";
-				Lbl1.Text = "0";
 			}
 		}
 
@@ -103,7 +104,12 @@ namespace iwm_ClipToFileName
 			}
 			LDirFileBase.Sort();
 
-			SubTextboxToListInit(false);
+			SubTextboxToListInit();
+		}
+
+		private void TbResult_MouseHover(object sender, EventArgs e)
+		{
+			ToolTip1.SetToolTip(TbResult, DispCnt.ToString() + "個");
 		}
 
 		private void CmsResult_フォルダ選択_Click(object sender, EventArgs e)
@@ -112,16 +118,7 @@ namespace iwm_ClipToFileName
 			SubTextboxToListInit();
 		}
 
-		private void CmsResult_全クリア_Click(object sender, EventArgs e)
-		{
-			TbResult.Text = "";
-			Lbl1.Text = "";
-
-			LDirFileBase.Clear();
-			LDirFileResult.Clear();
-		}
-
-		private void CmsResult_全選択コピー_Click(object sender, EventArgs e)
+		private void CmsResult_全コピー_Click(object sender, EventArgs e)
 		{
 			_ = TbResult.Focus();
 			TbResult.SelectAll();
@@ -184,17 +181,40 @@ namespace iwm_ClipToFileName
 			CbDepth.Text = CmsDepth_下へ.Text;
 		}
 
+		private void BtnReload_Click(object sender, EventArgs e)
+		{
+			// クリップボードから読込
+			if (Clipboard.ContainsFileDropList())
+			{
+				// 追記不可
+				LDirFileBase.Clear();
+				LDirFileResult.Clear();
+
+				foreach (string _s1 in Clipboard.GetFileDropList())
+				{
+					string _s2 = _s1;
+					if (Directory.Exists(_s2))
+					{
+						_s2 = _s2.TrimEnd('\\') + @"\";
+					}
+					LDirFileBase.Add(_s2);
+				}
+				LDirFileBase.Sort();
+
+				SubTextboxToListInit();
+			}
+		}
+
 		private void BtnExec_Click(object sender, EventArgs e)
 		{
+			Cursor.Current = Cursors.WaitCursor;
+			
 			TbResult.Text = "";
-			Lbl1.Text = "0";
 
 			if (LDirFileBase.Count == 0)
 			{
 				return;
 			}
-
-			Cursor.Current = Cursors.WaitCursor;
 
 			LDirFileResult.Clear();
 
@@ -214,18 +234,17 @@ namespace iwm_ClipToFileName
 			{
 				LDirFileResult.Sort();
 
-				int cnt = 0;
-
 				_ = SB.Clear();
 
 				if (TbSearch.Text.Length > 0 && LDirFileResult.Count > 0)
 				{
+					DispCnt = 0;
 					foreach (string _s1 in LDirFileResult)
 					{
 						if (_s1.IndexOf(TbSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
 						{
 							_ = SB.Append(_s1.TrimEnd() + NL);
-							++cnt;
+							++DispCnt;
 						}
 					}
 				}
@@ -235,21 +254,18 @@ namespace iwm_ClipToFileName
 					{
 						_ = SB.Append(_s1.TrimEnd() + NL);
 					}
-					cnt = LDirFileResult.Count;
+					DispCnt = LDirFileResult.Count();
 				}
 				_ = SendMessage(TbResult.Handle, EM_REPLACESEL, 1, SB.ToString());
-				Lbl1.Text = cnt.ToString();
 			}
 			catch
 			{
 			}
 
-			Cursor.Current = Cursor.Current;
+			Cursor.Current = Cursors.Default;
 		}
 
-		private void SubTextboxToListInit(
-			bool B = true
-		)
+		private void SubTextboxToListInit()
 		{
 			TbResult.Text = "";
 
@@ -260,9 +276,7 @@ namespace iwm_ClipToFileName
 			}
 			_ = SendMessage(TbResult.Handle, EM_REPLACESEL, 1, SB.ToString());
 
-			int cnt = LDirFileBase.Count();
-
-			Lbl1.Text = B ? cnt.ToString() : "";
+			DispCnt = LDirFileBase.Count();
 		}
 
 		private void SubGetDF01(
@@ -319,7 +333,7 @@ namespace iwm_ClipToFileName
 			}
 			catch
 			{
-				return;// Err
+				return; // Err
 			}
 		}
 
@@ -349,7 +363,7 @@ namespace iwm_ClipToFileName
 			}
 			catch
 			{
-				return;// Err
+				return; // Err
 			}
 		}
 
@@ -401,21 +415,16 @@ namespace iwm_ClipToFileName
 		private void CmsSearch_全クリア_Click(object sender, EventArgs e)
 		{
 			TbSearch.Text = "";
-			TbSearch.Focus();
+			_ = TbSearch.Focus();
 		}
 
 		private void CmsSearch_貼り付け_Click(object sender, EventArgs e)
 		{
 			TbSearch.Text = Clipboard.GetText();
-			TbSearch.Focus();
+			_ = TbSearch.Focus();
 		}
 
 		public string GblCB3 = "";
-
-		private void ComboBox3_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-		{
-			GblCB3 = CbType.Text;
-		}
 
 		private int RtnStrToInt(
 			string S
