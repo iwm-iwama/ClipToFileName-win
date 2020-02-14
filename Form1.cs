@@ -17,7 +17,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = @"Dir／Fileリスト iwm20200212";
+		private const string VERSION = "Dir／Fileリスト iwm20200214";
 		private const string NL = "\r\n";
 
 		private readonly string[] ADirFile = { "Dir&File", "Dir", "File" };
@@ -26,12 +26,15 @@ namespace iwm_ClipToFileName
 		private readonly List<string> LDirFileResult = new List<string>();
 		private readonly StringBuilder SB = new StringBuilder();
 
-		private const int EM_REPLACESEL = 0x00C2;
-
-		[DllImport("User32.dll")]
-		private static extern int SendMessage(IntPtr hWnd, int uMsg, int wParam, string lParam);
-
 		private int DispCnt = 0;
+
+		internal static class NativeMethods
+		{
+			[DllImport("User32.dll", CharSet = CharSet.Unicode)]
+			internal static extern int SendMessage(IntPtr hWnd, int uMsg, int wParam, string lParam);
+		}
+
+		private const int EM_REPLACESEL = 0x00C2;
 
 		public Form1()
 		{
@@ -218,7 +221,7 @@ namespace iwm_ClipToFileName
 
 			LDirFileResult.Clear();
 
-			string wildCard = @"*.*";
+			string wildCard = "*.*";
 			int depth = RtnStrToInt(CbDepth.Text);
 
 			foreach (string dirName in LDirFileBase)
@@ -256,7 +259,7 @@ namespace iwm_ClipToFileName
 					}
 					DispCnt = LDirFileResult.Count();
 				}
-				_ = SendMessage(TbResult.Handle, EM_REPLACESEL, 1, SB.ToString());
+				_ = NativeMethods.SendMessage(TbResult.Handle, EM_REPLACESEL, 1, SB.ToString());
 			}
 			catch
 			{
@@ -274,7 +277,7 @@ namespace iwm_ClipToFileName
 			{
 				_ = SB.Append(_s1 + NL);
 			}
-			_ = SendMessage(TbResult.Handle, EM_REPLACESEL, 1, SB.ToString());
+			_ = NativeMethods.SendMessage(TbResult.Handle, EM_REPLACESEL, 1, SB.ToString());
 
 			DispCnt = LDirFileBase.Count();
 		}
