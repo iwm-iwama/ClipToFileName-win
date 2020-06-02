@@ -17,9 +17,10 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = "Dir／Fileリスト iwm20200214";
+		private const string VERSION = "Dir／Fileリスト iwm20200602";
 		private const string NL = "\r\n";
 
+		private static readonly string[] ARGS = Environment.GetCommandLineArgs();
 		private readonly string[] ADirFile = { "Dir&File", "Dir", "File" };
 		private readonly int[] DirLevel = { 0, 260 };
 		private readonly List<string> LDirFileBase = new List<string>();
@@ -62,21 +63,21 @@ namespace iwm_ClipToFileName
 
 			TbSearch.Text = "";
 
-			// クリップボードから読込
-			if (Clipboard.ContainsFileDropList())
+			// SendTo 利用
+			if (ARGS.Length > 1)
 			{
 				// 追記不可
 				LDirFileBase.Clear();
 				LDirFileResult.Clear();
 
-				foreach (string _s1 in Clipboard.GetFileDropList())
+				for (int _i1 = 1; _i1 < ARGS.Length; _i1++)
 				{
-					string _s2 = _s1;
-					if (Directory.Exists(_s2))
+					string _s1 = ARGS[_i1];
+					if (Directory.Exists(_s1))
 					{
-						_s2 = _s2.TrimEnd('\\') + @"\";
+						_s1 = _s1.TrimEnd('\\') + @"\";
 					}
-					LDirFileBase.Add(_s2);
+					LDirFileBase.Add(_s1);
 				}
 				LDirFileBase.Sort();
 
@@ -184,27 +185,19 @@ namespace iwm_ClipToFileName
 			CbDepth.Text = CmsDepth_下へ.Text;
 		}
 
-		private void BtnReload_Click(object sender, EventArgs e)
+		private void BtnCopy_Click(object sender, EventArgs e)
 		{
-			// クリップボードから読込
-			if (Clipboard.ContainsFileDropList())
+			TbResult.SelectAll();
+			TbResult.Copy();
+		}
+
+		private void TbSearch_KeyUp(object sender, KeyEventArgs e)
+		{
+			switch (e.KeyCode)
 			{
-				// 追記不可
-				LDirFileBase.Clear();
-				LDirFileResult.Clear();
-
-				foreach (string _s1 in Clipboard.GetFileDropList())
-				{
-					string _s2 = _s1;
-					if (Directory.Exists(_s2))
-					{
-						_s2 = _s2.TrimEnd('\\') + @"\";
-					}
-					LDirFileBase.Add(_s2);
-				}
-				LDirFileBase.Sort();
-
-				SubTextboxToListInit();
+				case (Keys.Enter):
+					BtnExec_Click(sender, e);
+					break;
 			}
 		}
 
@@ -393,7 +386,7 @@ namespace iwm_ClipToFileName
 				Description = "フォルダを指定してください。",
 				RootFolder = Environment.SpecialFolder.Desktop,
 				SelectedPath = Environment.CurrentDirectory,
-				ShowNewFolderButton = true
+				ShowNewFolderButton = false
 			})
 			{
 				if (fbd.ShowDialog(this) == DialogResult.OK)

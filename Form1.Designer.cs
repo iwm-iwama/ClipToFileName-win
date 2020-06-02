@@ -53,7 +53,7 @@
 			this.CmsSearch_貼り付け = new System.Windows.Forms.ToolStripMenuItem();
 			this.CbType = new System.Windows.Forms.ComboBox();
 			this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.BtnReload = new System.Windows.Forms.Button();
+			this.BtnCopy = new System.Windows.Forms.Button();
 			this.CmsResult.SuspendLayout();
 			this.CmsDepth.SuspendLayout();
 			this.CmsSearch.SuspendLayout();
@@ -77,7 +77,7 @@
 			this.TbResult.Name = "TbResult";
 			this.TbResult.ReadOnly = true;
 			this.TbResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.TbResult.Size = new System.Drawing.Size(365, 230);
+			this.TbResult.Size = new System.Drawing.Size(315, 110);
 			this.TbResult.TabIndex = 0;
 			this.TbResult.TabStop = false;
 			this.TbResult.WordWrap = false;
@@ -165,7 +165,7 @@
 			this.CbDepth.FormattingEnabled = true;
 			this.CbDepth.IntegralHeight = false;
 			this.CbDepth.ItemHeight = 13;
-			this.CbDepth.Location = new System.Drawing.Point(122, 248);
+			this.CbDepth.Location = new System.Drawing.Point(85, 129);
 			this.CbDepth.Margin = new System.Windows.Forms.Padding(0);
 			this.CbDepth.Name = "CbDepth";
 			this.CbDepth.Size = new System.Drawing.Size(45, 21);
@@ -213,11 +213,11 @@
 			this.BtnExec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.BtnExec.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.BtnExec.ForeColor = System.Drawing.Color.White;
-			this.BtnExec.Location = new System.Drawing.Point(320, 247);
+			this.BtnExec.Location = new System.Drawing.Point(275, 128);
 			this.BtnExec.Margin = new System.Windows.Forms.Padding(0);
 			this.BtnExec.Name = "BtnExec";
-			this.BtnExec.Size = new System.Drawing.Size(55, 24);
-			this.BtnExec.TabIndex = 7;
+			this.BtnExec.Size = new System.Drawing.Size(50, 22);
+			this.BtnExec.TabIndex = 6;
 			this.BtnExec.Text = "検索";
 			this.BtnExec.UseVisualStyleBackColor = false;
 			this.BtnExec.Click += new System.EventHandler(this.BtnExec_Click);
@@ -230,13 +230,14 @@
 			this.TbSearch.Font = new System.Drawing.Font("ＭＳ ゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.TbSearch.ForeColor = System.Drawing.Color.Black;
 			this.TbSearch.ImeMode = System.Windows.Forms.ImeMode.Off;
-			this.TbSearch.Location = new System.Drawing.Point(246, 249);
+			this.TbSearch.Location = new System.Drawing.Point(207, 129);
 			this.TbSearch.Margin = new System.Windows.Forms.Padding(0);
 			this.TbSearch.Name = "TbSearch";
-			this.TbSearch.Size = new System.Drawing.Size(70, 20);
-			this.TbSearch.TabIndex = 6;
+			this.TbSearch.Size = new System.Drawing.Size(65, 20);
+			this.TbSearch.TabIndex = 5;
 			this.ToolTip1.SetToolTip(this.TbSearch, "検索文字列");
 			this.TbSearch.WordWrap = false;
+			this.TbSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbSearch_KeyUp);
 			// 
 			// CmsSearch
 			// 
@@ -280,7 +281,7 @@
 			this.CbType.FormattingEnabled = true;
 			this.CbType.IntegralHeight = false;
 			this.CbType.ItemHeight = 13;
-			this.CbType.Location = new System.Drawing.Point(172, 248);
+			this.CbType.Location = new System.Drawing.Point(134, 129);
 			this.CbType.Margin = new System.Windows.Forms.Padding(0);
 			this.CbType.Name = "CbType";
 			this.CbType.Size = new System.Drawing.Size(70, 21);
@@ -288,39 +289,37 @@
 			this.CbType.TabStop = false;
 			this.ToolTip1.SetToolTip(this.CbType, "フィルタ");
 			// 
-			// BtnReload
+			// BtnCopy
 			// 
-			this.BtnReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.BtnReload.BackColor = System.Drawing.Color.OrangeRed;
-			this.BtnReload.ContextMenuStrip = this.CmsNull;
-			this.BtnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.BtnReload.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.BtnReload.ForeColor = System.Drawing.Color.White;
-			this.BtnReload.Location = new System.Drawing.Point(10, 247);
-			this.BtnReload.Margin = new System.Windows.Forms.Padding(0);
-			this.BtnReload.Name = "BtnReload";
-			this.BtnReload.Size = new System.Drawing.Size(70, 24);
-			this.BtnReload.TabIndex = 1;
-			this.BtnReload.TabStop = false;
-			this.BtnReload.Text = "再読込";
-			this.ToolTip1.SetToolTip(this.BtnReload, "クリップボードから再読込");
-			this.BtnReload.UseVisualStyleBackColor = false;
-			this.BtnReload.Click += new System.EventHandler(this.BtnReload_Click);
+			this.BtnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.BtnCopy.BackColor = System.Drawing.Color.DimGray;
+			this.BtnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.BtnCopy.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.BtnCopy.ForeColor = System.Drawing.Color.White;
+			this.BtnCopy.Location = new System.Drawing.Point(10, 128);
+			this.BtnCopy.Margin = new System.Windows.Forms.Padding(0);
+			this.BtnCopy.Name = "BtnCopy";
+			this.BtnCopy.Size = new System.Drawing.Size(65, 22);
+			this.BtnCopy.TabIndex = 2;
+			this.BtnCopy.TabStop = false;
+			this.BtnCopy.Text = "コピー";
+			this.BtnCopy.UseVisualStyleBackColor = false;
+			this.BtnCopy.Click += new System.EventHandler(this.BtnCopy_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.DimGray;
-			this.ClientSize = new System.Drawing.Size(384, 281);
-			this.Controls.Add(this.BtnReload);
+			this.ClientSize = new System.Drawing.Size(334, 161);
+			this.Controls.Add(this.BtnCopy);
 			this.Controls.Add(this.CbType);
 			this.Controls.Add(this.CbDepth);
 			this.Controls.Add(this.TbSearch);
 			this.Controls.Add(this.BtnExec);
 			this.Controls.Add(this.TbResult);
 			this.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.MinimumSize = new System.Drawing.Size(400, 320);
+			this.MinimumSize = new System.Drawing.Size(350, 200);
 			this.Name = "Form1";
 			this.ShowIcon = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -362,7 +361,7 @@
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_名前を付けて保存_ShiftJIS;
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_名前を付けて保存_UTF8N;
 		private System.Windows.Forms.ToolTip ToolTip1;
-		private System.Windows.Forms.Button BtnReload;
+		private System.Windows.Forms.Button BtnCopy;
 	}
 }
 
