@@ -17,7 +17,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = "Dir／Fileリスト iwm20200602";
+		private const string VERSION = "Dir／Fileリスト iwm20200730";
 		private const string NL = "\r\n";
 
 		private static readonly string[] ARGS = Environment.GetCommandLineArgs();
@@ -408,7 +408,7 @@ namespace iwm_ClipToFileName
 			}
 		}
 
-		private void CmsSearch_全クリア_Click(object sender, EventArgs e)
+		private void CmsSearch_クリア_Click(object sender, EventArgs e)
 		{
 			TbSearch.Text = "";
 			_ = TbSearch.Focus();

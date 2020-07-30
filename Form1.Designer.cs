@@ -42,14 +42,12 @@
 			this.CbDepth = new System.Windows.Forms.ComboBox();
 			this.CmsDepth = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.CmsDepth_上へ = new System.Windows.Forms.ToolStripMenuItem();
-			this.CmsDepth_L1 = new System.Windows.Forms.ToolStripSeparator();
 			this.CmsDepth_下へ = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsNull = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.BtnExec = new System.Windows.Forms.Button();
 			this.TbSearch = new System.Windows.Forms.TextBox();
 			this.CmsSearch = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.CmsSearch_全クリア = new System.Windows.Forms.ToolStripMenuItem();
-			this.CmsSearch_L1 = new System.Windows.Forms.ToolStripSeparator();
+			this.CmsSearch_クリア = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsSearch_貼り付け = new System.Windows.Forms.ToolStripMenuItem();
 			this.CbType = new System.Windows.Forms.ComboBox();
 			this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -95,38 +93,38 @@
             this.CmsResult_L2,
             this.CmsResult_名前を付けて保存});
 			this.CmsResult.Name = "contextMenuStrip1";
-			this.CmsResult.Size = new System.Drawing.Size(162, 104);
+			this.CmsResult.Size = new System.Drawing.Size(181, 126);
 			// 
 			// CmsResult_フォルダ選択
 			// 
 			this.CmsResult_フォルダ選択.Name = "CmsResult_フォルダ選択";
-			this.CmsResult_フォルダ選択.Size = new System.Drawing.Size(161, 22);
+			this.CmsResult_フォルダ選択.Size = new System.Drawing.Size(180, 22);
 			this.CmsResult_フォルダ選択.Text = "フォルダ選択";
 			this.CmsResult_フォルダ選択.Click += new System.EventHandler(this.CmsResult_フォルダ選択_Click);
 			// 
 			// CmsResult_L1
 			// 
 			this.CmsResult_L1.Name = "CmsResult_L1";
-			this.CmsResult_L1.Size = new System.Drawing.Size(158, 6);
+			this.CmsResult_L1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// CmsResult_全コピー
 			// 
 			this.CmsResult_全コピー.Name = "CmsResult_全コピー";
-			this.CmsResult_全コピー.Size = new System.Drawing.Size(161, 22);
+			this.CmsResult_全コピー.Size = new System.Drawing.Size(180, 22);
 			this.CmsResult_全コピー.Text = "全コピー";
 			this.CmsResult_全コピー.Click += new System.EventHandler(this.CmsResult_全コピー_Click);
 			// 
 			// CmsResult_コピー
 			// 
 			this.CmsResult_コピー.Name = "CmsResult_コピー";
-			this.CmsResult_コピー.Size = new System.Drawing.Size(161, 22);
+			this.CmsResult_コピー.Size = new System.Drawing.Size(180, 22);
 			this.CmsResult_コピー.Text = "コピー";
 			this.CmsResult_コピー.Click += new System.EventHandler(this.CmsResult_コピー_Click);
 			// 
 			// CmsResult_L2
 			// 
 			this.CmsResult_L2.Name = "CmsResult_L2";
-			this.CmsResult_L2.Size = new System.Drawing.Size(158, 6);
+			this.CmsResult_L2.Size = new System.Drawing.Size(177, 6);
 			// 
 			// CmsResult_名前を付けて保存
 			// 
@@ -134,7 +132,7 @@
             this.CmsResult_名前を付けて保存_ShiftJIS,
             this.CmsResult_名前を付けて保存_UTF8N});
 			this.CmsResult_名前を付けて保存.Name = "CmsResult_名前を付けて保存";
-			this.CmsResult_名前を付けて保存.Size = new System.Drawing.Size(161, 22);
+			this.CmsResult_名前を付けて保存.Size = new System.Drawing.Size(180, 22);
 			this.CmsResult_名前を付けて保存.Text = "名前を付けて保存";
 			// 
 			// CmsResult_名前を付けて保存_ShiftJIS
@@ -177,10 +175,9 @@
 			// 
 			this.CmsDepth.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmsDepth_上へ,
-            this.CmsDepth_L1,
             this.CmsDepth_下へ});
 			this.CmsDepth.Name = "contextMenuStrip3";
-			this.CmsDepth.Size = new System.Drawing.Size(68, 54);
+			this.CmsDepth.Size = new System.Drawing.Size(68, 48);
 			// 
 			// CmsDepth_上へ
 			// 
@@ -188,11 +185,6 @@
 			this.CmsDepth_上へ.Name = "CmsDepth_上へ";
 			this.CmsDepth_上へ.Size = new System.Drawing.Size(67, 22);
 			this.CmsDepth_上へ.Click += new System.EventHandler(this.CmsDepth_上へ_Click);
-			// 
-			// CmsDepth_L1
-			// 
-			this.CmsDepth_L1.Name = "CmsDepth_L1";
-			this.CmsDepth_L1.Size = new System.Drawing.Size(64, 6);
 			// 
 			// CmsDepth_下へ
 			// 
@@ -242,23 +234,17 @@
 			// CmsSearch
 			// 
 			this.CmsSearch.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsSearch_全クリア,
-            this.CmsSearch_L1,
+            this.CmsSearch_クリア,
             this.CmsSearch_貼り付け});
 			this.CmsSearch.Name = "contextMenuStrip2";
-			this.CmsSearch.Size = new System.Drawing.Size(116, 54);
+			this.CmsSearch.Size = new System.Drawing.Size(116, 48);
 			// 
-			// CmsSearch_全クリア
+			// CmsSearch_クリア
 			// 
-			this.CmsSearch_全クリア.Name = "CmsSearch_全クリア";
-			this.CmsSearch_全クリア.Size = new System.Drawing.Size(115, 22);
-			this.CmsSearch_全クリア.Text = "全クリア";
-			this.CmsSearch_全クリア.Click += new System.EventHandler(this.CmsSearch_全クリア_Click);
-			// 
-			// CmsSearch_L1
-			// 
-			this.CmsSearch_L1.Name = "CmsSearch_L1";
-			this.CmsSearch_L1.Size = new System.Drawing.Size(112, 6);
+			this.CmsSearch_クリア.Name = "CmsSearch_クリア";
+			this.CmsSearch_クリア.Size = new System.Drawing.Size(115, 22);
+			this.CmsSearch_クリア.Text = "クリア";
+			this.CmsSearch_クリア.Click += new System.EventHandler(this.CmsSearch_クリア_Click);
 			// 
 			// CmsSearch_貼り付け
 			// 
@@ -347,14 +333,12 @@
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_フォルダ選択;
 		private System.Windows.Forms.TextBox TbSearch;
 		private System.Windows.Forms.ContextMenuStrip CmsSearch;
-		private System.Windows.Forms.ToolStripMenuItem CmsSearch_全クリア;
-		private System.Windows.Forms.ToolStripSeparator CmsSearch_L1;
+		private System.Windows.Forms.ToolStripMenuItem CmsSearch_クリア;
 		private System.Windows.Forms.ToolStripMenuItem CmsSearch_貼り付け;
 		private System.Windows.Forms.ComboBox CbType;
 		private System.Windows.Forms.ContextMenuStrip CmsNull;
 		private System.Windows.Forms.ContextMenuStrip CmsDepth;
 		private System.Windows.Forms.ToolStripMenuItem CmsDepth_上へ;
-		private System.Windows.Forms.ToolStripSeparator CmsDepth_L1;
 		private System.Windows.Forms.ToolStripMenuItem CmsDepth_下へ;
 		private System.Windows.Forms.ToolStripSeparator CmsResult_L2;
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_名前を付けて保存;
