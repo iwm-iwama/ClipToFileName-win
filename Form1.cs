@@ -17,7 +17,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = "Dir／Fileリスト iwm20200730";
+		private const string VERSION = "Dir／Fileリスト iwm20201031";
 		private const string NL = "\r\n";
 
 		private static readonly string[] ARGS = Environment.GetCommandLineArgs();
@@ -27,6 +27,7 @@ namespace iwm_ClipToFileName
 		private readonly List<string> LDirFileResult = new List<string>();
 		private readonly StringBuilder SB = new StringBuilder();
 
+		private TextBox TB = null;
 		private int DispCnt = 0;
 
 		internal static class NativeMethods
@@ -51,8 +52,7 @@ namespace iwm_ClipToFileName
 			{
 				_ = CbDepth.Items.Add(_i1);
 			}
-
-			CmsDepth_上へ.Text = CbDepth.Text = DirLevel[0].ToString();
+			CbDepth.Text = CmsDepth_上へ.Text = DirLevel[0].ToString();
 			CmsDepth_下へ.Text = DirLevel[1].ToString();
 
 			foreach (string _s1 in ADirFile)
@@ -109,6 +109,9 @@ namespace iwm_ClipToFileName
 			LDirFileBase.Sort();
 
 			SubTextboxToListInit();
+
+			// 再検索
+			BtnExec_Click(sender, e);
 		}
 
 		private void TbResult_MouseHover(object sender, EventArgs e)
@@ -116,22 +119,15 @@ namespace iwm_ClipToFileName
 			ToolTip1.SetToolTip(TbResult, DispCnt.ToString() + "個");
 		}
 
+		private void TbResult_MouseUp(object sender, MouseEventArgs e)
+		{
+			CmsTextSelect_Open(e, TbResult);
+		}
+
 		private void CmsResult_フォルダ選択_Click(object sender, EventArgs e)
 		{
 			SubDirSelect();
 			SubTextboxToListInit();
-		}
-
-		private void CmsResult_全コピー_Click(object sender, EventArgs e)
-		{
-			_ = TbResult.Focus();
-			TbResult.SelectAll();
-			TbResult.Copy();
-		}
-
-		private void CmsResult_コピー_Click(object sender, EventArgs e)
-		{
-			TbResult.Copy();
 		}
 
 		private void CmsResult_名前を付けて保存_ShiftJIS_Click(object sender, EventArgs e)
@@ -225,7 +221,7 @@ namespace iwm_ClipToFileName
 				SubGetDF11(dirName, wildCard, levelMax);
 			}
 
-			// 検索
+			// 再検索
 			try
 			{
 				LDirFileResult.Sort();
@@ -434,6 +430,20 @@ namespace iwm_ClipToFileName
 			{
 				return 0;
 			}
+		}
+
+		private void CmsTextSelect_Open(MouseEventArgs e, TextBox Tb)
+		{
+			if (Tb.SelectionLength > 0 && e.Button == MouseButtons.Left)
+			{
+				TB = Tb;
+				CmsTextSelect.Show(Cursor.Position);
+			}
+		}
+
+		private void CmsTextSelect_コピー_Click(object sender, EventArgs e)
+		{
+			TB.Copy();
 		}
 	}
 }
