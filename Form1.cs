@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -10,7 +11,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = "Dir／Fileリスト iwm20201031";
+		private const string VERSION = "Dir／Fileリスト iwm20210124";
 		private const string NL = "\r\n";
 
 		private static readonly string[] ARGS = Environment.GetCommandLineArgs();
@@ -38,6 +39,12 @@ namespace iwm_ClipToFileName
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			StartPosition = FormStartPosition.Manual;
+			DesktopLocation = new Point(
+				(Screen.PrimaryScreen.Bounds.Width - Width) / 2,
+				30
+			);
+
 			Text = VERSION;
 
 			// 初期化

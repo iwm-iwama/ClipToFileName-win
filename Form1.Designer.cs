@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.TbResult = new System.Windows.Forms.TextBox();
 			this.CmsResult = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.CmsResult_フォルダ選択 = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +96,7 @@
 			// 
 			// CmsResult_フォルダ選択
 			// 
+			this.CmsResult_フォルダ選択.Image = ((System.Drawing.Image)(resources.GetObject("CmsResult_フォルダ選択.Image")));
 			this.CmsResult_フォルダ選択.Name = "CmsResult_フォルダ選択";
 			this.CmsResult_フォルダ選択.Size = new System.Drawing.Size(161, 22);
 			this.CmsResult_フォルダ選択.Text = "フォルダ選択";
@@ -110,6 +112,7 @@
 			this.CmsResult_名前を付けて保存.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmsResult_名前を付けて保存_ShiftJIS,
             this.CmsResult_名前を付けて保存_UTF8N});
+			this.CmsResult_名前を付けて保存.Image = ((System.Drawing.Image)(resources.GetObject("CmsResult_名前を付けて保存.Image")));
 			this.CmsResult_名前を付けて保存.Name = "CmsResult_名前を付けて保存";
 			this.CmsResult_名前を付けて保存.Size = new System.Drawing.Size(161, 22);
 			this.CmsResult_名前を付けて保存.Text = "名前を付けて保存";
@@ -161,6 +164,7 @@
 			// CmsDepth_上へ
 			// 
 			this.CmsDepth_上へ.ForeColor = System.Drawing.Color.Black;
+			this.CmsDepth_上へ.Image = ((System.Drawing.Image)(resources.GetObject("CmsDepth_上へ.Image")));
 			this.CmsDepth_上へ.Name = "CmsDepth_上へ";
 			this.CmsDepth_上へ.Size = new System.Drawing.Size(92, 22);
 			this.CmsDepth_上へ.Text = "0";
@@ -169,6 +173,7 @@
 			// CmsDepth_下へ
 			// 
 			this.CmsDepth_下へ.ForeColor = System.Drawing.Color.Black;
+			this.CmsDepth_下へ.Image = ((System.Drawing.Image)(resources.GetObject("CmsDepth_下へ.Image")));
 			this.CmsDepth_下へ.Name = "CmsDepth_下へ";
 			this.CmsDepth_下へ.Size = new System.Drawing.Size(92, 22);
 			this.CmsDepth_下へ.Text = "260";
@@ -222,6 +227,7 @@
 			// 
 			// CmsSearch_クリア
 			// 
+			this.CmsSearch_クリア.Image = ((System.Drawing.Image)(resources.GetObject("CmsSearch_クリア.Image")));
 			this.CmsSearch_クリア.Name = "CmsSearch_クリア";
 			this.CmsSearch_クリア.Size = new System.Drawing.Size(115, 22);
 			this.CmsSearch_クリア.Text = "クリア";
@@ -229,6 +235,7 @@
 			// 
 			// CmsSearch_貼り付け
 			// 
+			this.CmsSearch_貼り付け.Image = ((System.Drawing.Image)(resources.GetObject("CmsSearch_貼り付け.Image")));
 			this.CmsSearch_貼り付け.Name = "CmsSearch_貼り付け";
 			this.CmsSearch_貼り付け.Size = new System.Drawing.Size(115, 22);
 			this.CmsSearch_貼り付け.Text = "貼り付け";
@@ -282,6 +289,7 @@
 			// 
 			// CmsTextSelect_コピー
 			// 
+			this.CmsTextSelect_コピー.Image = ((System.Drawing.Image)(resources.GetObject("CmsTextSelect_コピー.Image")));
 			this.CmsTextSelect_コピー.Name = "CmsTextSelect_コピー";
 			this.CmsTextSelect_コピー.Size = new System.Drawing.Size(99, 22);
 			this.CmsTextSelect_コピー.Text = "コピー";
@@ -304,7 +312,7 @@
 			this.Name = "Form1";
 			this.ShowIcon = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "ダミータイトル";
 			this.TopMost = true;
 			this.Load += new System.EventHandler(this.Form1_Load);
