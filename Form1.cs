@@ -11,7 +11,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = "Dir／Fileリスト iwm20210529";
+		private const string VERSION = "Dir／Fileリスト iwm20210601";
 		private const string NL = "\r\n";
 
 		private static readonly string[] ARGS = Environment.GetCommandLineArgs();
@@ -122,13 +122,22 @@ namespace iwm_ClipToFileName
 
 		private void TbResult_DragEnter(object sender, DragEventArgs e)
 		{
+			e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.All : DragDropEffects.None;
+		}
+
+		private void TbResult_DragDrop(object sender, DragEventArgs e)
+		{
+			string[] aFn = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+
+			Directory.SetCurrentDirectory(Path.GetDirectoryName(aFn[0]));
+
 			// 追記不可
 			TbResult.Text = "";
 
 			LDirFileBase.Clear();
 			LDirFileResult.Clear();
 
-			foreach (string _s1 in (string[])e.Data.GetData(DataFormats.FileDrop, false))
+			foreach (string _s1 in aFn)
 			{
 				string s02 = _s1.TrimEnd();
 				if (Directory.Exists(s02))
@@ -177,27 +186,27 @@ namespace iwm_ClipToFileName
 		)
 		{
 			TextBox TB = TbResult;
-			using (SaveFileDialog saveFileDialog1 = new SaveFileDialog
+
+			SaveFileDialog sfd = new SaveFileDialog
 			{
-				InitialDirectory = ".",
 				FileName = DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt",
 				Filter = "All files (*.*)|*.*",
-				FilterIndex = 1
-			})
-			{
-				if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-				{
-					switch (code.ToUpper())
-					{
-						case "UTF-8N":
-							UTF8Encoding utf8nEnc = new UTF8Encoding(false);
-							File.WriteAllText(saveFileDialog1.FileName, TB.Text, utf8nEnc);
-							break;
+				FilterIndex = 1,
+				InitialDirectory = Environment.CurrentDirectory
+			};
 
-						default:
-							File.WriteAllText(saveFileDialog1.FileName, TB.Text, Encoding.GetEncoding("Shift_JIS"));
-							break;
-					}
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				switch (code.ToUpper())
+				{
+					case "UTF-8N":
+						UTF8Encoding utf8nEnc = new UTF8Encoding(false);
+						File.WriteAllText(sfd.FileName, TB.Text, utf8nEnc);
+						break;
+
+					default:
+						File.WriteAllText(sfd.FileName, TB.Text, Encoding.GetEncoding("Shift_JIS"));
+						break;
 				}
 			}
 		}
@@ -408,30 +417,31 @@ namespace iwm_ClipToFileName
 
 		private void SubDirSelect()
 		{
-			using (FolderBrowserDialog fbd = new FolderBrowserDialog
+			FolderBrowserDialog fbd = new FolderBrowserDialog
 			{
 				Description = "フォルダを指定してください。",
-				RootFolder = Environment.SpecialFolder.Desktop,
+				RootFolder = Environment.SpecialFolder.MyComputer,
 				SelectedPath = Environment.CurrentDirectory,
 				ShowNewFolderButton = false
-			})
-			{
-				if (fbd.ShowDialog(this) == DialogResult.OK)
-				{
-					LDirFileBase.Clear();
-					LDirFileResult.Clear();
+			};
 
-					foreach (string _s1 in fbd.SelectedPath.Split('\n'))
+			if (fbd.ShowDialog(this) == DialogResult.OK)
+			{
+				Directory.SetCurrentDirectory(fbd.SelectedPath);
+
+				LDirFileBase.Clear();
+				LDirFileResult.Clear();
+
+				foreach (string _s1 in fbd.SelectedPath.Split('\n'))
+				{
+					string s02 = _s1.TrimEnd();
+					if (Directory.Exists(s02))
 					{
-						string s02 = _s1.TrimEnd();
-						if (Directory.Exists(s02))
-						{
-							s02 = s02.TrimEnd('\\') + @"\";
-						}
-						LDirFileBase.Add(s02);
+						s02 = s02.TrimEnd('\\') + @"\";
 					}
-					LDirFileBase.Sort();
+					LDirFileBase.Add(s02);
 				}
+				LDirFileBase.Sort();
 			}
 		}
 
