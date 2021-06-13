@@ -45,17 +45,14 @@
 			this.BtnExec = new System.Windows.Forms.Button();
 			this.TbSearch = new System.Windows.Forms.TextBox();
 			this.CmsSearch = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.CmsSearch_クリア = new System.Windows.Forms.ToolStripMenuItem();
+			this.CmsSearch_全クリア = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsSearch_貼り付け = new System.Windows.Forms.ToolStripMenuItem();
 			this.CbType = new System.Windows.Forms.ComboBox();
 			this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.BtnCopy = new System.Windows.Forms.Button();
-			this.CmsTextSelect = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.CmsTextSelect_コピー = new System.Windows.Forms.ToolStripMenuItem();
 			this.CmsResult.SuspendLayout();
 			this.CmsDepth.SuspendLayout();
 			this.CmsSearch.SuspendLayout();
-			this.CmsTextSelect.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// TbResult
@@ -83,7 +80,6 @@
 			this.TbResult.DragDrop += new System.Windows.Forms.DragEventHandler(this.TbResult_DragDrop);
 			this.TbResult.DragEnter += new System.Windows.Forms.DragEventHandler(this.TbResult_DragEnter);
 			this.TbResult.MouseHover += new System.EventHandler(this.TbResult_MouseHover);
-			this.TbResult.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TbResult_MouseUp);
 			// 
 			// CmsResult
 			// 
@@ -221,18 +217,18 @@
 			// CmsSearch
 			// 
 			this.CmsSearch.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsSearch_クリア,
+            this.CmsSearch_全クリア,
             this.CmsSearch_貼り付け});
 			this.CmsSearch.Name = "contextMenuStrip2";
 			this.CmsSearch.Size = new System.Drawing.Size(116, 48);
 			// 
-			// CmsSearch_クリア
+			// CmsSearch_全クリア
 			// 
-			this.CmsSearch_クリア.Image = ((System.Drawing.Image)(resources.GetObject("CmsSearch_クリア.Image")));
-			this.CmsSearch_クリア.Name = "CmsSearch_クリア";
-			this.CmsSearch_クリア.Size = new System.Drawing.Size(115, 22);
-			this.CmsSearch_クリア.Text = "クリア";
-			this.CmsSearch_クリア.Click += new System.EventHandler(this.CmsSearch_クリア_Click);
+			this.CmsSearch_全クリア.Image = ((System.Drawing.Image)(resources.GetObject("CmsSearch_全クリア.Image")));
+			this.CmsSearch_全クリア.Name = "CmsSearch_全クリア";
+			this.CmsSearch_全クリア.Size = new System.Drawing.Size(115, 22);
+			this.CmsSearch_全クリア.Text = "全クリア";
+			this.CmsSearch_全クリア.Click += new System.EventHandler(this.CmsSearch_全クリア_Click);
 			// 
 			// CmsSearch_貼り付け
 			// 
@@ -281,21 +277,6 @@
 			this.BtnCopy.UseVisualStyleBackColor = false;
 			this.BtnCopy.Click += new System.EventHandler(this.BtnCopy_Click);
 			// 
-			// CmsTextSelect
-			// 
-			this.CmsTextSelect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsTextSelect_コピー});
-			this.CmsTextSelect.Name = "CmsResult";
-			this.CmsTextSelect.Size = new System.Drawing.Size(100, 26);
-			// 
-			// CmsTextSelect_コピー
-			// 
-			this.CmsTextSelect_コピー.Image = ((System.Drawing.Image)(resources.GetObject("CmsTextSelect_コピー.Image")));
-			this.CmsTextSelect_コピー.Name = "CmsTextSelect_コピー";
-			this.CmsTextSelect_コピー.Size = new System.Drawing.Size(99, 22);
-			this.CmsTextSelect_コピー.Text = "コピー";
-			this.CmsTextSelect_コピー.Click += new System.EventHandler(this.CmsTextSelect_コピー_Click);
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -320,7 +301,6 @@
 			this.CmsResult.ResumeLayout(false);
 			this.CmsDepth.ResumeLayout(false);
 			this.CmsSearch.ResumeLayout(false);
-			this.CmsTextSelect.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -335,7 +315,7 @@
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_フォルダ選択;
 		private System.Windows.Forms.TextBox TbSearch;
 		private System.Windows.Forms.ContextMenuStrip CmsSearch;
-		private System.Windows.Forms.ToolStripMenuItem CmsSearch_クリア;
+		private System.Windows.Forms.ToolStripMenuItem CmsSearch_全クリア;
 		private System.Windows.Forms.ToolStripMenuItem CmsSearch_貼り付け;
 		private System.Windows.Forms.ComboBox CbType;
 		private System.Windows.Forms.ContextMenuStrip CmsNull;
@@ -348,8 +328,6 @@
 		private System.Windows.Forms.ToolStripMenuItem CmsResult_名前を付けて保存_UTF8N;
 		private System.Windows.Forms.ToolTip ToolTip1;
 		private System.Windows.Forms.Button BtnCopy;
-		private System.Windows.Forms.ContextMenuStrip CmsTextSelect;
-		private System.Windows.Forms.ToolStripMenuItem CmsTextSelect_コピー;
 	}
 }
 

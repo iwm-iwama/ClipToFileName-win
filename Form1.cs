@@ -11,7 +11,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = "Dir／Fileリスト iwm20210601";
+		private const string VERSION = "Dir／Fileリスト iwm20210613";
 		private const string NL = "\r\n";
 
 		private static readonly string[] ARGS = Environment.GetCommandLineArgs();
@@ -21,7 +21,6 @@ namespace iwm_ClipToFileName
 		private readonly List<string> LDirFileResult = new List<string>();
 		private readonly StringBuilder SB = new StringBuilder();
 
-		private TextBox TB = null;
 		private int DispCnt = 0;
 
 		internal static class NativeMethods
@@ -157,11 +156,6 @@ namespace iwm_ClipToFileName
 		private void TbResult_MouseHover(object sender, EventArgs e)
 		{
 			ToolTip1.SetToolTip(TbResult, DispCnt.ToString() + "個");
-		}
-
-		private void TbResult_MouseUp(object sender, MouseEventArgs e)
-		{
-			CmsTextSelect_Open(e, TbResult);
 		}
 
 		private void CmsResult_フォルダ選択_Click(object sender, EventArgs e)
@@ -445,7 +439,7 @@ namespace iwm_ClipToFileName
 			}
 		}
 
-		private void CmsSearch_クリア_Click(object sender, EventArgs e)
+		private void CmsSearch_全クリア_Click(object sender, EventArgs e)
 		{
 			TbSearch.Text = "";
 			_ = TbSearch.Focus();
@@ -471,20 +465,6 @@ namespace iwm_ClipToFileName
 			{
 				return 0;
 			}
-		}
-
-		private void CmsTextSelect_Open(MouseEventArgs e, TextBox Tb)
-		{
-			if (Tb.SelectionLength > 0 && e.Button == MouseButtons.Left)
-			{
-				TB = Tb;
-				CmsTextSelect.Show(Cursor.Position);
-			}
-		}
-
-		private void CmsTextSelect_コピー_Click(object sender, EventArgs e)
-		{
-			TB.Copy();
 		}
 	}
 }
