@@ -58,9 +58,9 @@
 			// TbResult
 			// 
 			this.TbResult.AllowDrop = true;
-			this.TbResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.TbResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			| System.Windows.Forms.AnchorStyles.Left)
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.TbResult.BackColor = System.Drawing.Color.Black;
 			this.TbResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.TbResult.ContextMenuStrip = this.CmsResult;
@@ -85,9 +85,9 @@
 			// 
 			this.CmsResult.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.CmsResult.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsResult_フォルダ選択,
-            this.CmsResult_L2,
-            this.CmsResult_名前を付けて保存});
+			this.CmsResult_フォルダ選択,
+			this.CmsResult_L2,
+			this.CmsResult_名前を付けて保存});
 			this.CmsResult.Name = "contextMenuStrip1";
 			this.CmsResult.Size = new System.Drawing.Size(162, 54);
 			// 
@@ -107,8 +107,8 @@
 			// CmsResult_名前を付けて保存
 			// 
 			this.CmsResult_名前を付けて保存.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsResult_名前を付けて保存_ShiftJIS,
-            this.CmsResult_名前を付けて保存_UTF8N});
+			this.CmsResult_名前を付けて保存_ShiftJIS,
+			this.CmsResult_名前を付けて保存_UTF8N});
 			this.CmsResult_名前を付けて保存.Image = ((System.Drawing.Image)(resources.GetObject("CmsResult_名前を付けて保存.Image")));
 			this.CmsResult_名前を付けて保存.Name = "CmsResult_名前を付けて保存";
 			this.CmsResult_名前を付けて保存.Size = new System.Drawing.Size(161, 22);
@@ -153,8 +153,8 @@
 			// CmsDepth
 			// 
 			this.CmsDepth.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsDepth_上へ,
-            this.CmsDepth_下へ});
+			this.CmsDepth_上へ,
+			this.CmsDepth_下へ});
 			this.CmsDepth.Name = "contextMenuStrip3";
 			this.CmsDepth.Size = new System.Drawing.Size(93, 48);
 			// 
@@ -217,8 +217,8 @@
 			// CmsSearch
 			// 
 			this.CmsSearch.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmsSearch_全クリア,
-            this.CmsSearch_貼り付け});
+			this.CmsSearch_全クリア,
+			this.CmsSearch_貼り付け});
 			this.CmsSearch.Name = "contextMenuStrip2";
 			this.CmsSearch.Size = new System.Drawing.Size(116, 48);
 			// 

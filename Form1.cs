@@ -11,7 +11,7 @@ namespace iwm_ClipToFileName
 {
 	public partial class Form1 : Form
 	{
-		private const string VERSION = "Dir／Fileリスト iwm20210613";
+		private const string VERSION = "Dir／Fileリスト iwm20210614";
 		private const string NL = "\r\n";
 
 		private static readonly string[] ARGS = Environment.GetCommandLineArgs();
@@ -39,7 +39,7 @@ namespace iwm_ClipToFileName
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			StartPosition = FormStartPosition.Manual;
-			Form1_StartPosition();
+			SubForm1_StartPosition();
 
 			Text = VERSION;
 
@@ -85,7 +85,7 @@ namespace iwm_ClipToFileName
 			}
 		}
 
-		private void Form1_StartPosition()
+		private void SubForm1_StartPosition()
 		{
 			int WorkingAreaW = Screen.PrimaryScreen.WorkingArea.Width;
 			int WorkingAreaH = Screen.PrimaryScreen.WorkingArea.Height;
